@@ -62,7 +62,8 @@
     <div class="col-md-4">
       <section class="panel">
         <h2>IE countdown</h2>
-        <p>Når havner IE9 under "sperregrensa"?</p>
+        
+        <p id="ie" class="jumbo"><span>480 dager</span> igjen med IE9</p>
       </section>
 
     </div>
@@ -208,7 +209,7 @@
 
                var dydx = ((oldUsage / oldUsageTot) - (newUsage / newUsageTot)) * oldUsageTot;
                var estimatIPerioder = oldUsage / dydx
-
+               document.querySelectorAll('#ie').innerText(estimatIPerioder);
                
 
            })

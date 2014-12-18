@@ -87,9 +87,13 @@ body {
   padding-right:.5rem;
 }
 
-#myChart {
+canvas {
   max-width: 100% !important;
   height: auto;
+}
+
+.jumbo span {
+  font-size:4em;
 }
 
 article,
