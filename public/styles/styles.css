@@ -32,6 +32,12 @@ body {
   padding:2rem 1rem;
 }
 
+.navbar {
+  color:#fff;
+  background: #3e3832;
+  padding: 0.5rem 1rem;
+}
+
 article,
 aside,
 details,
@@ -363,33 +369,6 @@ main {
   border-top-right-radius: 3px;
 }
 
-/*BOOTSTRAP */
-
-.jumbotron {
-  padding: 30px 15px;
-  margin-bottom: 30px;
-  color: inherit;
-  background-color: #eee;
-}
-.jumbotron h1,
-.jumbotron .h1 {
-  color: inherit;
-}
-.jumbotron p {
-  margin-bottom: 15px;
-  font-size: 21px;
-  font-weight: 200;
-}
-.jumbotron > hr {
-  border-top-color: #d5d5d5;
-}
-.container .jumbotron,
-.container-fluid .jumbotron {
-  border-radius: 6px;
-}
-.jumbotron .container {
-  max-width: 100%;
-}
 
 
 
