@@ -163,6 +163,56 @@
                'end-date': moment(now).format('YYYY-MM-DD')
            });
 
+           var eldst = query({
+               'ids': 'ga:78449289',
+               'dimensions': 'ga:browser,ga:browserVersion',
+               'metrics': 'ga:sessions',
+               'filters': 'ga:browser=@Internet;ga:browserVersion!=10.0;ga:browserVersion!=11.0;ga:browserVersion!=10.6',
+               'start-date': moment(now).subtract(60, 'day').day(0).format('YYYY-MM-DD'),
+               'end-date': moment(now).subtract(30, 'day').day(0).format('YYYY-MM-DD')
+           });
+
+           var eldstTot = query({
+               'ids': 'ga:78449289',
+               'dimensions': 'ga:browser,ga:browserVersion',
+               'metrics': 'ga:sessions',
+               'start-date': moment(now).subtract(60, 'day').day(0).format('YYYY-MM-DD'),
+               'end-date': moment(now).subtract(30, 'day').day(0).format('YYYY-MM-DD')
+           });
+
+           var nyere = query({
+               'ids': 'ga:78449289',
+               'dimensions': 'ga:browser,ga:browserVersion',
+               'metrics': 'ga:sessions',
+               'filters': 'ga:browser=@Internet;ga:browserVersion!=10.0;ga:browserVersion!=11.0;ga:browserVersion!=10.6',
+               'start-date': moment(now).subtract(30, 'day').day(0).format('YYYY-MM-DD'),
+               'end-date': moment(now).format('YYYY-MM-DD')
+           });
+
+           var nyereTot = query({
+               'ids': 'ga:78449289',
+               'dimensions': 'ga:browser,ga:browserVersion',
+               'metrics': 'ga:sessions',
+               'start-date': moment(now).subtract(30, 'day').day(0).format('YYYY-MM-DD'),
+               'end-date': moment(now).format('YYYY-MM-DD')
+           });
+
+           Promise.all([eldst, nyere,eldstTot, nyereTot]).then(function (results) {
+
+               var oldUsage = getSumOfUsage(results,0);
+               var newUsage = getSumOfUsage(results,1);
+               var oldUsageTot= getSumOfUsage(results,2);
+               var newUsageTot = getSumOfUsage(results,3);
+
+
+
+               var dydx = ((oldUsage / oldUsageTot) - (newUsage / newUsageTot)) * oldUsageTot;
+               var estimatIPerioder = oldUsage / dydx
+
+               
+
+           })
+
            Promise.all([mobile, tablet, desktop]).then(function (results) {
 
                var data = parseResultsIntoData(results);
@@ -176,6 +226,15 @@
        });
    });
 
+    function getSumOfUsage(results, index){
+        var ie10usage = 0;
+
+        results[index].rows.forEach(function(entry) {
+            ie10usage += parseInt(entry[2]);
+        });
+
+        return ie10usage;
+    }
 
 
 
