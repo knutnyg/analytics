@@ -166,7 +166,6 @@
            });
 
 
-           timeline.set(newIds).execute();
 
            Promise.all([mobile, tablet, desktop]).then(function (results) {
 
@@ -209,7 +208,7 @@
             datasets: [
                 {
                     label: "My First dataset",
-                    fillColor: "rgba(220,220,220,0.2)",
+                    fillColor: "rgba(0,255,0,0.2)",
                     strokeColor: "rgba(220,220,220,1)",
                     pointColor: "rgba(220,220,220,1)",
                     pointStrokeColor: "#fff",
@@ -219,7 +218,7 @@
                 },
                 {
                     label: "My Second dataset",
-                    fillColor: "rgba(151,187,205,0.2)",
+                    fillColor: "rgba(255,0,0,0.2)",
                     strokeColor: "rgba(151,187,205,1)",
                     pointColor: "rgba(151,187,205,1)",
                     pointStrokeColor: "#fff",
@@ -229,7 +228,7 @@
                 },
                 {
                     label: "My thrid dataset",
-                    fillColor: "rgba(151,187,205,0.2)",
+                    fillColor: "rgba(0,0,255,0.2)",
                     strokeColor: "rgba(151,187,205,1)",
                     pointColor: "rgba(151,187,205,1)",
                     pointStrokeColor: "#fff",
