@@ -28,14 +28,39 @@ body {
   margin:0;
 }
 
+
+
 .pagewrapper, .siteheader {
   padding:2rem 1rem;
 }
 
 .navbar {
+  margin-top: -2rem;
+  margin-left:-1rem;
+  margin-bottom:1rem;
+  padding: 1rem;
   color:#fff;
   background: #3e3832;
   padding: 0.5rem 1rem;
+}
+
+.control-panel {
+  margin-bottom:2rem;
+}
+
+.control-panel table {
+  float:left;
+  margin-right:2rem;
+
+}
+
+.control-panel table:last-of-type {
+  margin:0;
+}
+
+.control-panel table,
+.control-panel table  td {
+  width: auto !important;
 }
 
 article,

@@ -9,23 +9,28 @@
 </head>
 <body>
 
-<div class="navbar">
-  <div class="container" id="auth-button"></div>
-</div>
-
-
 <header class="siteheader">
-<div class="container">
+  <div class="navbar">
+    <div class="container" id="auth-button"></div>
+  </div>
 
-<section id="view-selector">Tom section #view-selector</section>
-
-<div class="row">
-    <div class="col-md-12">
-      <h1>Google Analytics Dashboard</h1>
+  <div class="container">
+    <div class="control-panel group" id="view-selector">
+      Tom section #view-selector
     </div>
-</div>
+  </div>
 
-</div>
+  
+
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+          <h1>Google Analytics Dashboard</h1>
+        </div>
+    </div>
+
+  </div>
 </header>
 
 <div class="pagewrapper">
@@ -114,7 +119,7 @@
            },
            chart: {
                type: 'LINE',
-               container: 'timeline'
+               container: 'timeline' 
            }
        });
 
