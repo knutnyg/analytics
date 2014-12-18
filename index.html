@@ -12,7 +12,6 @@
 <section id="view-selector"></section>
 <section id="timeline"></section>
 
-
 <main class="container">
   <div class="row">
     <div class="col-md-12">
@@ -62,7 +61,7 @@
     (function(w,d,s,g,js,fjs){
         g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
         js=d.createElement(s);fjs=d.getElementsByTagName(s)[0];
-        js.src='https://apis.google.com/js/platform.js';
+        js.src='public/js/platform.js';
         fjs.parentNode.insertBefore(js,fjs);js.onload=function(){g.load('analytics')};
     }(window,document,'script'));
 </script>
