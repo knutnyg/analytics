@@ -126,26 +126,14 @@
        viewSelector.on('change', function(ids) {
            var now = moment(); // .subtract(3, 'day');
 
-           var newIds = {
-               query: {
-                   ids: ids
-               }
-           };
-
-           var thisMonth = query({
-               'ids': 'ga:78449289',
-               'dimensions': 'ga:date,ga:nthDay',
-               'metrics': 'ga:visitors',
-               'start-date': moment(now).subtract(30, 'day').day(0).format('YYYY-MM-DD'),
-               'end-date': moment(now).format('YYYY-MM-DD')
-           });
+           var length = 30
 
            var mobile = query({
                'ids': 'ga:78449289',
                'dimensions': 'ga:date',
                'metrics': 'ga:sessions',
                'filters': 'ga:deviceCategory==mobile',
-               'start-date': moment(now).subtract(30, 'day').day(0).format('YYYY-MM-DD'),
+               'start-date': moment(now).subtract(length, 'day').day(0).format('YYYY-MM-DD'),
                'end-date': moment(now).format('YYYY-MM-DD')
            });
 
@@ -154,7 +142,7 @@
                'dimensions': 'ga:date',
                'metrics': 'ga:sessions',
                'filters': 'ga:deviceCategory==tablet',
-               'start-date': moment(now).subtract(30, 'day').day(0).format('YYYY-MM-DD'),
+               'start-date': moment(now).subtract(length, 'day').day(0).format('YYYY-MM-DD'),
                'end-date': moment(now).format('YYYY-MM-DD')
            });
 
@@ -163,20 +151,19 @@
                'dimensions': 'ga:date',
                'metrics': 'ga:sessions',
                'filters': 'ga:deviceCategory==desktop',
-               'start-date': moment(now).subtract(30, 'day').day(0).format('YYYY-MM-DD'),
+               'start-date': moment(now).subtract(length, 'day').day(0).format('YYYY-MM-DD'),
                'end-date': moment(now).format('YYYY-MM-DD')
            });
 
-
-
            Promise.all([mobile, tablet, desktop]).then(function (results) {
 
-               console.log(results)
                var data = parseResultsIntoData(results);
 
                // CHARTS
                var ctx = document.getElementById("myChart").getContext("2d");
-               var myNewChart = new Chart(ctx).Line(data);
+               var myNewChart = new Chart(ctx).Line(data,{
+                animation: false
+               });
            });
        });
    });
@@ -200,7 +187,7 @@
     }
 
     function parseResultsIntoData(results){
-        var labels = results[0].rows.map(function(row) { return +row[0]; });
+        var labels = results[0].rows.map(function(row) { return  row[0].substring(6) + '.' +  row[0].substring(4,6); });
         var mobileData = results[0].rows.map(function(row) { return +row[1]; });
         var tabletData = results[1].rows.map(function(row) { return +row[1]; });
         var desktopData = results[2].rows.map(function(row) { return +row[1]; });
