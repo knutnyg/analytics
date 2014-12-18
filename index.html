@@ -3,6 +3,9 @@
 <head>
     <title>Analytics Hackaton!</title>
     <link href="public/styles/styles.css" media="all" rel="stylesheet" type="text/css"/>
+    <script>
+       var dashboard = dashboard || {};
+    </script>
 </head>
 <body>
 
@@ -57,6 +60,8 @@
 
 <!-- Step 2: Load the library. -->
 
+<script type="text/javascript" src="public/js/google-client-id.js"></script>
+
 <script>
     (function(w,d,s,g,js,fjs){
         g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
@@ -80,7 +85,7 @@
 <script>
     gapi.analytics.ready(function() {
 
-        var CLIENT_ID = 'INSERT';
+        var CLIENT_ID = dashboard.googleClientId;
 
         gapi.analytics.auth.authorize({
             container: 'auth-button',
