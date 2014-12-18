@@ -87,6 +87,10 @@ body {
   padding-right:.5rem;
 }
 
+#myChart {
+  max-width: 100% !important;
+  height: auto;
+}
 
 article,
 aside,
