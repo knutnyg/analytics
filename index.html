@@ -67,6 +67,17 @@
     }(window,document,'script'));
 </script>
 
+<script src="public/js/Chart.js"></script>
+<script src="public/js/moment.js"></script>
+
+<!-- Include the ViewSelector2 component script. -->
+<script src="public/js/view-selector2.js"></script>
+
+<!-- Include the DateRangeSelector component script. -->
+<script src="public/js/date-range-selector.js"></script>
+
+<script src="public/js/active-users.js"></script>
+
 <script>
     gapi.analytics.ready(function() {
 
@@ -98,7 +109,7 @@
                container: 'timeline'
            }
        });
-        
+
        // Step 6: Hook up the components to work together.
 
        gapi.analytics.auth.on('success', function(response) {
