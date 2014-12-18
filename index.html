@@ -9,44 +9,52 @@
 </head>
 <body>
 
+
 <!-- Step 1: Create the containing elements. -->
+<header class="siteheader">
+<div class="container">
+<section id="auth-button">Tom section #auth-button</section>
+<section id="view-selector">Tom section #view-selector</section>
 
-<section id="auth-button"></section>
-<section id="view-selector"></section>
-<section id="timeline"></section>
-
-<main class="container">
-  <div class="row">
+<div class="row">
     <div class="col-md-12">
       <h1>Google Analytics Dashboard</h1>
     </div>
-  </div>
+</div>
+
+</div>
+</header>
+
+<div class="pagewrapper">
+<main class="container">
+  
   
 
   <div class="row">
     <div class="col-md-12">
-      <div class="panel">
+      <section class="panel">
         <h2>Timeline</h2>
-      </div>
+        <div id="timeline">#timeline placeholder</div>
+      </section>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-4">
-      <div class="panel">
+      <section class="panel">
         <h2>Real time</h2>
-      </div>
+      </section>
     </div>
     <div class="col-md-4">
-      <div class="panel">
+      <section class="panel">
         <h2>Yada yada</h2>
-      </div>
+      </section>
 
     </div>
     <div class="col-md-4">
-      <div class="panel">
+      <section class="panel">
         <h2>IE</h2>
-      </div>
+      </section>
 
     </div>
   </div>
@@ -56,7 +64,7 @@
 
 
 </main>
-
+</div>
 
 <!-- Step 2: Load the library. -->
 
@@ -90,7 +98,7 @@
         gapi.analytics.auth.authorize({
             container: 'auth-button',
             clientid: CLIENT_ID
-        })
+        });
 
        // Step 4: Create the view selector.
 
