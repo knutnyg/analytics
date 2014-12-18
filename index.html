@@ -10,27 +10,19 @@
 <body>
 
 <header class="siteheader">
-  <div class="navbar">
-    <div class="container" id="auth-button"></div>
-  </div>
-
-  <div class="container">
-    <div class="control-panel group" id="view-selector">
-      Tom section #view-selector
+  <div class="navbar group">
+    <div class="container">
+      <div id="auth-button" class="login"></div>
+      <div class="control-panel">
+          <div id="view-selector" class="view-selector group"></div>
+      </div>
     </div>
+
   </div>
 
   
+  <h1>Google Analytics Dashboard</h1>
 
-
-  <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-          <h1>Google Analytics Dashboard</h1>
-        </div>
-    </div>
-
-  </div>
 </header>
 
 <div class="pagewrapper">
@@ -43,7 +35,7 @@
       <section class="panel">
         <h2>Timeline</h2>
         <div id="timeline">#timeline placeholder</div>
-          <canvas id="myChart" width="400" height="400"></canvas>
+          <canvas id="myChart" width="1000" height="400"></canvas>
       </section>
     </div>
   </div>

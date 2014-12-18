@@ -26,6 +26,8 @@ body {
 
 .siteheader h1{
   margin:0;
+  padding:0;
+  font-size:3rem;
 }
 
 
@@ -34,29 +36,42 @@ body {
   padding:2rem 1rem;
 }
 
+.pagewrapper {
+  padding-top:0;
+}
+
 .navbar {
   margin-top: -2rem;
   margin-left:-1rem;
-  margin-bottom:1rem;
+  margin-right:-1rem;
+  margin-bottom:2rem;
   padding: 1rem;
   color:#fff;
   background: #3e3832;
-  padding: 0.5rem 1rem;
+  
 }
 
-.control-panel {
-  margin-bottom:2rem;
+.navbar .container{
+  display:table;
+  width:100%;
+}
+
+.navbar .login,
+.navbar .control-panel {
+  display:table-cell;
+  vertical-align: middle;
+  width:50%;
+}
+
+.navbar .view-selector {
+  float: right;
+
 }
 
 .control-panel table {
-  float:left;
-  margin-right:2rem;
-
+  float:left; 
 }
 
-.control-panel table:last-of-type {
-  margin:0;
-}
 
 .control-panel table,
 .control-panel table  td {
