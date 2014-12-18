@@ -129,14 +129,55 @@
        });
 
        viewSelector.on('change', function(ids) {
+           var now = moment(); // .subtract(3, 'day');
+
            var newIds = {
                query: {
                    ids: ids
                }
            };
+
+           var thisWeek = query({
+               'ids': ids,
+               'dimensions': 'ga:date,ga:nthDay',
+               'metrics': 'ga:sessions',
+               'start-date': moment(now).subtract(1, 'day').day(0).format('YYYY-MM-DD'),
+               'end-date': moment(now).format('YYYY-MM-DD')
+           });
            timeline.set(newIds).execute();
+
+
+           Promise.all([thisWeek]).then(function (results) {
+               console.log(results)
+           });
        });
    });
+
+    /**
+     * Create a new ViewSelector instance to be rendered inside of an
+     * element with the id "view-selector-container".
+     */
+    var viewSelector = new gapi.analytics.ViewSelector({
+        container: 'view-selector-container'
+    });
+
+    // Render the view selector to the page.
+    viewSelector.execute();
+
+    /**
+     * Extend the Embed APIs `gapi.analytics.report.Data` component to
+     * return a promise the is fulfilled with the value returned by the API.
+     * @param {Object} params The request parameters.
+     * @return {Promise} A promise.
+     */
+    function query(params) {
+        return new Promise(function(resolve, reject) {
+            var data = new gapi.analytics.report.Data({query: params});
+            data.once('success', function(response) { resolve(response); })
+                    .once('error', function(response) { reject(response); })
+                    .execute();
+        });
+    }
 </script>
 </body>
 </html>
