@@ -68,15 +68,25 @@ body {
 
 }
 
-.control-panel table {
+.view-selector table {
   float:left; 
+  margin-right:1rem;
+}
+
+.view-selector table:last-child{
+  margin-right:0;
 }
 
 
-.control-panel table,
-.control-panel table  td {
+.view-selector table,
+.view-selector table  td {
   width: auto !important;
 }
+
+.view-selector table td:first-of-type {
+  padding-right:.5rem;
+}
+
 
 article,
 aside,
