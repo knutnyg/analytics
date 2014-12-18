@@ -130,24 +130,48 @@
                }
            };
 
-           var thisWeek = query({
-               'ids': ids,
+           var thisMonth = query({
+               'ids': 'ga:78449289',
                'dimensions': 'ga:date,ga:nthDay',
-               'metrics': 'ga:sessions',
+               'metrics': 'ga:visitors',
                'start-date': moment(now).subtract(30, 'day').day(0).format('YYYY-MM-DD'),
                'end-date': moment(now).format('YYYY-MM-DD')
            });
+
+           var mobile = query({
+               'ids': 'ga:78449289',
+               'dimensions': 'ga:date',
+               'metrics': 'ga:sessions',
+               'filters': 'ga:deviceCategory==mobile',
+               'start-date': moment(now).subtract(30, 'day').day(0).format('YYYY-MM-DD'),
+               'end-date': moment(now).format('YYYY-MM-DD')
+           });
+
+           var tablet = query({
+               'ids': 'ga:78449289',
+               'dimensions': 'ga:date',
+               'metrics': 'ga:sessions',
+               'filters': 'ga:deviceCategory==tablet',
+               'start-date': moment(now).subtract(30, 'day').day(0).format('YYYY-MM-DD'),
+               'end-date': moment(now).format('YYYY-MM-DD')
+           });
+
+           var desktop = query({
+               'ids': 'ga:78449289',
+               'dimensions': 'ga:date',
+               'metrics': 'ga:sessions',
+               'filters': 'ga:deviceCategory==desktop',
+               'start-date': moment(now).subtract(30, 'day').day(0).format('YYYY-MM-DD'),
+               'end-date': moment(now).format('YYYY-MM-DD')
+           });
+
+
            timeline.set(newIds).execute();
 
+           Promise.all([mobile, tablet, desktop]).then(function (results) {
 
-           Promise.all([thisWeek]).then(function (results) {
                console.log(results)
-
                var data = parseResultsIntoData(results);
-               var data1 = results[0].rows.map(function(row) { return +row[2]; });
-               var labels = results[0].rows.map(function(row) { return +row[0]; });
-               console.log(data1)
-               console.log(labels)
 
                // CHARTS
                var ctx = document.getElementById("myChart").getContext("2d");
@@ -176,7 +200,9 @@
 
     function parseResultsIntoData(results){
         var labels = results[0].rows.map(function(row) { return +row[0]; });
-        var data1 = results[0].rows.map(function(row) { return +row[2]; });
+        var mobileData = results[0].rows.map(function(row) { return +row[1]; });
+        var tabletData = results[1].rows.map(function(row) { return +row[1]; });
+        var desktopData = results[2].rows.map(function(row) { return +row[1]; });
 
         var data = {
             labels: labels,
@@ -189,8 +215,29 @@
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: data1
+                    data: mobileData
+                },
+                {
+                    label: "My Second dataset",
+                    fillColor: "rgba(151,187,205,0.2)",
+                    strokeColor: "rgba(151,187,205,1)",
+                    pointColor: "rgba(151,187,205,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(151,187,205,1)",
+                    data: tabletData
+                },
+                {
+                    label: "My thrid dataset",
+                    fillColor: "rgba(151,187,205,0.2)",
+                    strokeColor: "rgba(151,187,205,1)",
+                    pointColor: "rgba(151,187,205,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(151,187,205,1)",
+                    data: desktopData
                 }
+
             ]
         };
 
